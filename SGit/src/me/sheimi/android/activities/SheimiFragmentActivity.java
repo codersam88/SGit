@@ -22,7 +22,8 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.utils.StorageUtils;
-
+//TODO include files chooser
+//TODO save details if operation is cancelled
 public class SheimiFragmentActivity extends Activity {
 
     public static interface OnBackClickListener {
@@ -73,9 +74,9 @@ public class SheimiFragmentActivity extends Activity {
         showToastMessage(getString(resId));
     }
 
-    public int getColor(int resId) {
-        return getResources().getColor(resId);
-    }
+//    public int getColor(int resId) {
+//        return getResources().getColor(resId);
+//    }
 
     public void showMessageDialog(int title, int msg, int positiveBtn,
             DialogInterface.OnClickListener positiveListenerr) {
