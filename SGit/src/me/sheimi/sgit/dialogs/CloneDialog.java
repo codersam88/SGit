@@ -14,6 +14,7 @@ import me.sheimi.sgit.repo.tasks.repo.CloneTask;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * Created by sheimi on 8/24/13.
@@ -49,6 +51,15 @@ public class CloneDialog extends SheimiDialogFragment implements
 
         mRemoteURL = (EditText) layout.findViewById(R.id.remoteURL);
         mLocalPath = (EditText) layout.findViewById(R.id.localPath);
+	mLocalPath.setOnClickListener(new View.OnClickListener() {
+		public void onClick(View v) {
+		    CharSequence text = "Hello toast!";
+		    int duration = Toast.LENGTH_SHORT;
+
+		    Toast toast = Toast.makeText(getActivity(), text, duration);
+		    toast.show();
+		}
+	    });
         mUsername = (EditText) layout.findViewById(R.id.username);
         mPassword = (EditText) layout.findViewById(R.id.password);
         mIsSavePassword = (CheckBox) layout.findViewById(R.id.savePassword);
