@@ -17,6 +17,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,12 +34,13 @@ public class CloneDialog extends SheimiDialogFragment implements
         View.OnClickListener, OnPasswordEntered {
 
     private EditText mRemoteURL;
-    private EditText mLocalPath;
+    private Button mLocalPath;
     private EditText mUsername;
     private EditText mPassword;
     private CheckBox mIsSavePassword;
     private RepoListActivity mActivity;
     private Repo mRepo;
+    private static final int ACTIVITY_CHOOSE_FILE = 3;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -50,14 +52,15 @@ public class CloneDialog extends SheimiDialogFragment implements
         builder.setView(layout);
 
         mRemoteURL = (EditText) layout.findViewById(R.id.remoteURL);
-        mLocalPath = (EditText) layout.findViewById(R.id.localPath);
+        mLocalPath = (Button) layout.findViewById(R.id.localPath);
 	mLocalPath.setOnClickListener(new View.OnClickListener() {
 		public void onClick(View v) {
-		    CharSequence text = "Hello toast!";
-		    int duration = Toast.LENGTH_SHORT;
-
-		    Toast toast = Toast.makeText(getActivity(), text, duration);
-		    toast.show();
+		    Intent chooseFile;
+		    Intent intent;
+		    chooseFile = new Intent(Intent.ACTION_GET_CONTENT);
+		    chooseFile.setType("file/*");
+		    intent = Intent.createChooser(chooseFile, "Choose a file");
+		    startActivityForResult(intent, ACTIVITY_CHOOSE_FILE);
 		}
 	    });
         mUsername = (EditText) layout.findViewById(R.id.username);

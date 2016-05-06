@@ -17,7 +17,7 @@
             android:imeOptions="actionNext"
             android:inputType="textUri"/>
 
-    <EditText
+    <Button
             android:id="@+id/localPath"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
